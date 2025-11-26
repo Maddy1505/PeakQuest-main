@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:login_page/view/favorite.form.dart';
+import 'package:login_page/view/screen.view.dart';
 
 class BottomNavigation extends StatelessWidget {
-  BottomNavigation({super.key});
+  final int initialIndex;
+  BottomNavigation({super.key, this.initialIndex = 0});
 
   // ValueNotifier to track selected bottom tab
-  final ValueNotifier<int> selectedIndex = ValueNotifier<int>(0);
+  late final ValueNotifier<int> selectedIndex = ValueNotifier<int>(initialIndex);
 
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
+
       valueListenable: selectedIndex,
       builder: (context, value, _) {
         return Container(
@@ -25,7 +30,10 @@ class BottomNavigation extends StatelessWidget {
                 index: 0,
                 currentIndex: value,
                 icon: Icons.home_outlined,
-                onTap: () => selectedIndex.value = 0,
+                onTap: () {
+                  selectedIndex.value = 0;
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => ScreenView()));
+                },
               ),
               _navItem(
                 index: 1,
@@ -33,6 +41,7 @@ class BottomNavigation extends StatelessWidget {
                 icon: Icons.favorite_outline,
                 onTap: () {
                   selectedIndex.value = 1;
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => FavoriteForm()));
 
                 }
               ),

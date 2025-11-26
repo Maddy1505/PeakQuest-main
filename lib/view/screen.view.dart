@@ -761,14 +761,14 @@ class ScreenView extends StatelessWidget {
                                     SizedBox(height: 180.0),
 
                                     Text(
-                                      "Queenstown",
+                                      "Eiffel Tower",
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontFamily: 'Poppins',
                                       ),
                                     ),
                                     Text(
-                                      "New Zealand",
+                                      "Paris",
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontFamily: 'Poppins',
@@ -787,10 +787,13 @@ class ScreenView extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 40),
-              BottomNavigation(),
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: Padding(
+        padding:  EdgeInsets.only(bottom: 20),
+        child: BottomNavigation(initialIndex: 0),
       ),
     );
   }
