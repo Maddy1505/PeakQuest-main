@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_page/view/screen.view.dart';
 import 'package:login_page/view/widgets/bottomnavigation.dart';
 
 class FavoriteForm extends StatelessWidget {
@@ -9,6 +10,25 @@ class FavoriteForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        centerTitle: true,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () {
+            // Go back to BottomNavigation & show Home tab
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ScreenView()));
+          },
+        ),
+        title: const Text(
+          "Favorite Location",
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      ),
 
       body: SafeArea(
         child: SingleChildScrollView(

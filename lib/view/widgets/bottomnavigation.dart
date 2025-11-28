@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:login_page/view/favorite.form.dart';
+import 'package:login_page/view/profile.form.dart';
 import 'package:login_page/view/screen.view.dart';
 
 class BottomNavigation extends StatelessWidget {
@@ -12,7 +13,7 @@ class BottomNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(
+    return ValueListenableBuilder(       //Rebuilds UI when that value changes
 
       valueListenable: selectedIndex,
       builder: (context, value, _) {
@@ -49,7 +50,10 @@ class BottomNavigation extends StatelessWidget {
                 index: 2,
                 currentIndex: value,
                 icon: Icons.person_outline,
-                onTap: () => selectedIndex.value = 2,
+                onTap: () {
+                  selectedIndex.value = 2;
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfileForm()));
+                }
               ),
               _navItem(
                 index: 3,
